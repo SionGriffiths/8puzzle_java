@@ -1,9 +1,6 @@
 /**
- * Created with IntelliJ IDEA.
- * User: pooey
- * Date: 04/11/13
- * Time: 20:05
- * To change this template use File | Settings | File Templates.
- */
+ * @author Siôn Griffiths - sig2@aber.ac.uk
+*/
 public class BFS {
+    //implement BFS
 }
