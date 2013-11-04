@@ -1,4 +1,4 @@
-package mainCode;
+package unitTests;
 
 /**
  * @author Siôn Griffiths - sig2@aber.ac.uk
