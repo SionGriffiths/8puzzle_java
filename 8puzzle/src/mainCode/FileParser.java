@@ -11,42 +11,37 @@ public class FileParser {
   /**The File instance to hold a reference to a file */
   private File file;
 
-
   /**A Buffered reader to facilitate reading of the file*/
   private BufferedReader bRead;
 
   /**A String to hold each line of the file, initialised to empty*/
   private String line ="";
 
+  /**A String to hold an entire board state as read from file, initialised to empty*/
+  private String state = "";
+
   /**Constructs a FileParser*/
   public FileParser(){
 
   }
-
   /**
-   * Instantiates a new File instance passing in a file name
-   * @param fileName the file name
+   * Reads the passed in file line by line into a string.
+   * Commas are stripped out of the string before it is returned
+   * @param fileName the name of the file to be read
+   * @return the String representing a board state
    */
-  public void setFile(String  fileName){
-    file = new File(fileName);
-  }
+  public char[] parseFile(String  fileName){
 
-  /**Reads the current file line by line into a string.
-   * The string is split into constituent characters which are added
-   * to the output array. Conducts checks to ensure only valid files are loaded.
-   */
-  public boolean parseFile(){
 
     try{
-
+      file = new File(fileName);
       bRead = new BufferedReader(new FileReader(file));
 
       while((line = bRead.readLine()) != null){
-        //line = bRead.readLine();
-        System.out.println(line);
+        state += line;
       }
 
-      System.out.println("EOF");
+
       bRead.close();
 
     }
@@ -57,11 +52,9 @@ public class FileParser {
       e.printStackTrace();
     }
 
+    state = state.replaceAll("," , "");
 
-    return true;
+    return state.toCharArray();
   }
-
-
-
 
 }

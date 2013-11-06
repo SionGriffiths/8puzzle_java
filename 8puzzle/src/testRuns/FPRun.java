@@ -10,7 +10,9 @@ import mainCode.FileParser;
 public class FPRun {
   public static void main(String[] args) {
     FileParser fp = new FileParser();
-    fp.setFile("testStart1.txt");
-    fp.parseFile();
+    char[] test = fp.parseFile("testStart1.txt");
+     //String out = new String(test);
+    System.out.println(new String(test) + "\n" + test.length);
+
   }
 }
