@@ -62,7 +62,11 @@ public class Board {
   }
 
 
-
+  /**
+   * Method to move the space 'up' in the puzzle
+   * With suitable constraint to prevent out-of-bounds
+   * @return boolean whether the move meets constraints
+   */
   public boolean moveUp(){
     legal = false;
 
@@ -76,6 +80,11 @@ public class Board {
     return legal;
   }
 
+  /**
+   * Method to move the space 'down' in the puzzle
+   * With suitable constraint to prevent out-of-bounds
+   * @return boolean whether the move meets constraints
+   */
   public boolean moveDown(){
     legal = false;
 
@@ -89,6 +98,11 @@ public class Board {
     return legal;
   }
 
+  /**
+   * Method to move the space 'left' in the puzzle
+   * With suitable constraint to prevent out-of-bounds
+   * @return boolean whether the move meets constraints
+   */
   public boolean moveLeft(){
     legal = false;
 
@@ -102,6 +116,11 @@ public class Board {
     return legal;
   }
 
+  /**
+   * Method to move the space 'right' in the puzzle
+   * With suitable constraint to prevent out-of-bounds
+   * @return boolean whether the move meets constraints
+   */
   public boolean moveRight(){
     legal = false;
 
@@ -115,18 +134,21 @@ public class Board {
     return legal;
   }
 
+  /**
+   * Method returns the current state
+   * @return  the current state
+   */
   public char[] getCurrentState(){
     return currentState;
   }
 
+  /**
+   * Method returns position of the 'space' in the current puzzle state
+   * @return the position of the 'space' in current state
+   */
   public int getZeroIndex(){
     return zeroIndex;
   }
-  //hold an index to 0 position in array - no need to search for it.
-  //moving 0 will be a case of board[0index] = board[0index+3], 0index = 0index+3
-  //this will swap the value of 0index with 0index+3  (this is an example of moveDown)
 
-
-  //maybe have a changePlaces method to swap values in 2 array indexes.
 
 }
