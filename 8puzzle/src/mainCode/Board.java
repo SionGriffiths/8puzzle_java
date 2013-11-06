@@ -5,26 +5,36 @@ package mainCode;
  */
 public class Board {
 
+
+  /**
+   * A constant used to represent the 'space' in the puzzle state
+   */
   private static final char ZERO = '0';
+
+
   /**
    * A constant use to control the length of the state arrays
    */
   private static final int STATE_SIZE = 9;
+
 
   /**
    * A char array to hold the start state of the puzzle
    */
   private char[] startState = new char[STATE_SIZE];
 
+
   /**
    * A char array to hold the goal state of the puzzle
    */
   private char[] goalState = new char[STATE_SIZE];
 
+
   /**
    * a char array to hold the current state of the puzzle
    */
   private char[] currentState = new char[STATE_SIZE];
+
 
   /**
    * An int used to track the position of the 0 representing the space
@@ -32,11 +42,13 @@ public class Board {
    */
   private int zeroIndex;
 
+
   /**
    * A boolean used to control allowed movements of the space
    * in a puzzle state
    */
   private boolean legal = false;
+
 
   /**
    * Constructs a Board instance with a start and goal state
@@ -49,6 +61,7 @@ public class Board {
     findZero(startState);
     currentState = startState;
   }
+
 
   /**
    * Method used to find the initial index position of the 0 representing the space
@@ -80,6 +93,7 @@ public class Board {
     return legal;
   }
 
+
   /**
    * Method to move the space 'down' in the puzzle
    * With suitable constraint to prevent out-of-bounds
@@ -97,6 +111,7 @@ public class Board {
 
     return legal;
   }
+
 
   /**
    * Method to move the space 'left' in the puzzle
@@ -116,6 +131,7 @@ public class Board {
     return legal;
   }
 
+
   /**
    * Method to move the space 'right' in the puzzle
    * With suitable constraint to prevent out-of-bounds
@@ -134,6 +150,7 @@ public class Board {
     return legal;
   }
 
+
   /**
    * Method returns the current state
    * @return  the current state
@@ -141,6 +158,7 @@ public class Board {
   public char[] getCurrentState(){
     return currentState;
   }
+
 
   /**
    * Method returns position of the 'space' in the current puzzle state
