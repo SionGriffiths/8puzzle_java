@@ -121,7 +121,7 @@ public class Board {
   public boolean moveLeft(){
     legal = false;
 
-    if((zeroIndex != 0)&&(zeroIndex != 3) && (zeroIndex != 6)){
+    if((zeroIndex != 0) && (zeroIndex != 3) && (zeroIndex != 6)){
       currentState[zeroIndex] = currentState[(zeroIndex-1)];
       zeroIndex-=1;
       currentState[zeroIndex] = ZERO;
@@ -140,7 +140,7 @@ public class Board {
   public boolean moveRight(){
     legal = false;
 
-    if((zeroIndex != 2)&&(zeroIndex != 5) && (zeroIndex != 8)){
+    if((zeroIndex != 2) && (zeroIndex != 5) && (zeroIndex != 8)){
       currentState[zeroIndex] = currentState[(zeroIndex+1)];
       zeroIndex+=1;
       currentState[zeroIndex] = ZERO;
@@ -157,6 +157,15 @@ public class Board {
    */
   public char[] getCurrentState(){
     return currentState;
+  }
+
+
+  /**
+   * Method returns the goal state
+   * @return the goal state
+   */
+  public char[] getGoalState(){
+    return goalState;
   }
 
 
