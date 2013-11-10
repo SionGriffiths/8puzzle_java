@@ -11,29 +11,22 @@ public class Board {
    */
   private static final char ZERO = '0';
 
-
-  /**
-   * A constant use to control the length of the state arrays
-   */
-  private static final int STATE_SIZE = 9;
-
-
   /**
    * A char array to hold the start state of the puzzle
    */
-  private char[] startState = new char[STATE_SIZE];
+  private String startState = "";
 
 
   /**
    * A char array to hold the goal state of the puzzle
    */
-  private char[] goalState = new char[STATE_SIZE];
+  private String goalState = "";
 
 
   /**
    * a char array to hold the current state of the puzzle
    */
-  private char[] currentState = new char[STATE_SIZE];
+  private String currentState = "";
 
 
   /**
@@ -55,7 +48,7 @@ public class Board {
    * @param startState the start state of the puzzle
    * @param goalState the goal state of the puzzle
    */
-  public Board(char[] startState, char[] goalState){
+  public Board(String startState, String goalState){
     this.startState = startState;
     this.goalState = goalState;
     findZero(startState);
@@ -68,9 +61,9 @@ public class Board {
    * in the start state of the puzzle
    * @param state the start state of the puzzle
    */
-  private void findZero(char[] state){
-    for(int i = 0; i < state.length; i++){
-      if(state[i] == ZERO){zeroIndex = i;}
+  private void findZero(String state){
+    for(int i = 0; i < state.length(); i++){
+      if(state.charAt(i) == ZERO){zeroIndex = i;}
     }
   }
 
@@ -155,7 +148,7 @@ public class Board {
    * Method returns the current state
    * @return  the current state
    */
-  public char[] getCurrentState(){
+  public String getCurrentState(){
     return currentState;
   }
 
@@ -164,7 +157,7 @@ public class Board {
    * Method returns the goal state
    * @return the goal state
    */
-  public char[] getGoalState(){
+  public String getGoalState(){
     return goalState;
   }
 

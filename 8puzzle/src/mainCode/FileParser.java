@@ -30,7 +30,7 @@ public class FileParser {
    * @param fileName the name of the file to be read
    * @return the String representing a board state
    */
-  public char[] parseFile(String  fileName){
+  public String parseFile(String  fileName){
 
 
     try{
@@ -54,7 +54,7 @@ public class FileParser {
 
     state = state.replaceAll("," , "");
 
-    return state.toCharArray();
+    return state;
   }
 
 }
