@@ -53,20 +53,25 @@ public class DFS {
 
       while(!stack.isEmpty()){
 
-        if(stack.peek().equals(b.getGoalState())){
-          System.out.println("Solution found");
-          System.out.println("Nodes expanded : " + nodeCount);
-          break;
+
+          if(stack.peek().equals(b.getGoalState())){
+            System.out.println("Solution found");
+            System.out.println("Nodes expanded : " + nodeCount);
+            break;
+          }
+
+          getChilderen(stack.pop());
+
+
         }
-
-        add(b.moveUp(stack.peek()));
-        add(b.moveDown(stack.peek()));
-        add(b.moveLeft(stack.peek()));
-        add(b.moveRight(stack.pop()));
-
       }
-    }
 
+  public void getChilderen(String state){
+    add(b.moveUp(state));
+    add(b.moveDown(state));
+    add(b.moveLeft(state));
+    add(b.moveRight(state));
+  }
 
 
 

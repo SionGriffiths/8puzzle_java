@@ -12,7 +12,7 @@ import mainCode.FileParser;
 public class BRun {
   public static void main(String[] args) {
     FileParser fp = new FileParser();
-    Board b = new Board(fp.parseFile("testStart3.txt"),fp.parseFile("testGoal1.txt"));
+    Board b = new Board(fp.parseFile("testStart2.txt"),fp.parseFile("testGoal1.txt"));
     BFS bfs = new BFS(b);
     bfs.runBFS();
 

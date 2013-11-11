@@ -58,13 +58,17 @@ public class BFS {
         break;
       }
 
-      add(b.moveUp(queue.peek()));
-      add(b.moveDown(queue.peek()));
-      add(b.moveLeft(queue.peek()));
-      add(b.moveRight(queue.poll()));
+      getChilderen(queue.poll());
+
 
     }
   }
 
+  public void getChilderen(String state){
+    add(b.moveUp(state));
+    add(b.moveDown(state));
+    add(b.moveLeft(state));
+    add(b.moveRight(state));
+  }
 
 }
