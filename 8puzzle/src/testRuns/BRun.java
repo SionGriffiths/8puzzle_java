@@ -1,5 +1,6 @@
 package testRuns;
 
+import mainCode.BFS;
 import mainCode.Board;
 import mainCode.FileParser;
 
@@ -11,22 +12,23 @@ import mainCode.FileParser;
 public class BRun {
   public static void main(String[] args) {
     FileParser fp = new FileParser();
-    Board b = new Board(("123456780"),fp.parseFile("testGoal1.txt"));
+    Board b = new Board(fp.parseFile("testStart3.txt"),fp.parseFile("testGoal1.txt"));
+    BFS bfs = new BFS(b);
+    bfs.runBFS();
 
-    System.out.println(b.getZeroIndex());
-    System.out.println(new String(b.getCurrentState()));
-    b.moveUp();
-    System.out.println(b.getZeroIndex());
-    System.out.println(new String(b.getCurrentState()));
-    b.moveUp();
-    System.out.println(b.getZeroIndex());
-    System.out.println(new String(b.getCurrentState()));
-    b.moveUp();
-    System.out.println(b.getZeroIndex());
-    System.out.println(new String(b.getCurrentState()));
-    b.moveUp();
-    System.out.println(b.getZeroIndex());
-    System.out.println(new String(b.getCurrentState()));
 
+
+    /*
+    System.out.println(b.getCurrentState() + " zi = " + b.getZeroIndex() );
+    System.out.println(b.moveUp(b.getCurrentState())+ " zi = " + b.getZeroIndex() );
+
+    System.out.println(b.moveDown(b.getCurrentState())+ " zi = " + b.getZeroIndex() );
+
+    System.out.println(b.moveUp(b.getCurrentState())+ " zi = " + b.getZeroIndex() );
+
+    System.out.println(b.moveLeft(b.getCurrentState())+ " zi = " + b.getZeroIndex() );
+
+    System.out.println(b.moveUp(b.getCurrentState()) + " zi = " + b.getZeroIndex() );
+  */
   }
 }

@@ -15,10 +15,10 @@ public class FileParser {
   private BufferedReader bRead;
 
   /**A String to hold each line of the file, initialised to empty*/
-  private String line ="";
+  private String line;
 
   /**A String to hold an entire board state as read from file, initialised to empty*/
-  private String state = "";
+  private String state;
 
   /**Constructs a FileParser*/
   public FileParser(){
@@ -31,7 +31,8 @@ public class FileParser {
    * @return the String representing a board state
    */
   public String parseFile(String  fileName){
-
+    state = "";
+    line = "";
 
     try{
       file = new File(fileName);

@@ -6,10 +6,7 @@ package mainCode;
 public class Board {
 
 
-  /**
-   * A constant used to represent the 'space' in the puzzle state
-   */
-  private static final char ZERO = '0';
+
 
   /**
    * A char array to hold the start state of the puzzle
@@ -36,11 +33,7 @@ public class Board {
   private int zeroIndex;
 
 
-  /**
-   * A boolean used to control allowed movements of the space
-   * in a puzzle state
-   */
-  private boolean legal = false;
+
 
 
   /**
@@ -62,9 +55,7 @@ public class Board {
    * @param state the start state of the puzzle
    */
   private void findZero(String state){
-    for(int i = 0; i < state.length(); i++){
-      if(state.charAt(i) == ZERO){zeroIndex = i;}
-    }
+    zeroIndex = state.indexOf('0');
   }
 
 
@@ -73,16 +64,14 @@ public class Board {
    * With suitable constraint to prevent out-of-bounds
    * @return boolean whether the move meets constraints
    */
-  public boolean moveUp(){
-    legal = false;
-
+  public String moveUp(String state){
+    findZero(state);
     if(zeroIndex >= 3){
-      currentState = currentState.substring(0,zeroIndex-3)+"0"
-        +currentState.substring(zeroIndex-2,zeroIndex)+currentState.charAt(zeroIndex-3)+currentState.substring(zeroIndex+1);
-      legal = true;
+      state = swapChars(state, (zeroIndex-3));
+
     }
 
-    return legal;
+    return state;
   }
 
 
@@ -91,67 +80,74 @@ public class Board {
    * With suitable constraint to prevent out-of-bounds
    * @return boolean whether the move meets constraints
    */
-  /*
-  public boolean moveDown(){
-    legal = false;
-
+  public String moveDown(String state){
+    findZero(state);
     if(zeroIndex <= 5){
-      currentState[zeroIndex] = currentState[(zeroIndex+3)];
-      zeroIndex+=3;
-      currentState[zeroIndex] = ZERO;
-      legal = true;
+      state = swapChars(state, (zeroIndex+3));
+
     }
 
-    return legal;
+    return state;
   }
-*/
+
 
   /**
    * Method to move the space 'left' in the puzzle
    * With suitable constraint to prevent out-of-bounds
    * @return boolean whether the move meets constraints
    */
-  /*
-  public boolean moveLeft(){
-    legal = false;
 
+  public String moveLeft(String state){
+    findZero(state);
     if((zeroIndex != 0) && (zeroIndex != 3) && (zeroIndex != 6)){
-      currentState[zeroIndex] = currentState[(zeroIndex-1)];
-      zeroIndex-=1;
-      currentState[zeroIndex] = ZERO;
-      legal = true;
+      state = swapChars(state, (zeroIndex-1));
+
     }
 
-    return legal;
+    return state;
   }
-*/
+
 
   /**
    * Method to move the space 'right' in the puzzle
    * With suitable constraint to prevent out-of-bounds
    * @return boolean whether the move meets constraints
    */
-  /*
-  public boolean moveRight(){
-    legal = false;
 
+  public String moveRight(String state){
+    findZero(state);
     if((zeroIndex != 2) && (zeroIndex != 5) && (zeroIndex != 8)){
-      currentState[zeroIndex] = currentState[(zeroIndex+1)];
-      zeroIndex+=1;
-      currentState[zeroIndex] = ZERO;
-      legal = true;
+      state = swapChars(state, (zeroIndex+1));
+
     }
 
-    return legal;
+    return state;
   }
 
-*/
+  private String swapChars(String state, int index){
+
+    char temp = state.charAt(index);
+    state = state.replace('0', 'x');
+    state = state.replace(temp , '0');
+    state = state.replace('x',temp);
+
+    return state;
+  }
+
   /**
    * Method returns the current state
    * @return  the current state
    */
   public String getCurrentState(){
     return currentState;
+  }
+
+  /**
+   * Method returns the start state
+   * @return the start state
+   */
+  public String getStartState(){
+    return startState;
   }
 
 

@@ -24,12 +24,15 @@ public class BFS {
    */
   private HashSet<String> open = new HashSet<String>();
 
+  int nodeCount = 0;
+
   /**
    * Constructs a BFS instance takes the Board as argument so current and goal states can be retrieved
    * @param b the Board instance
    */
   public BFS(Board b){
     this.b = b;
+    add(b.getStartState());
   }
 
   /**
@@ -41,16 +44,27 @@ public class BFS {
     if(!open.contains(state)){
       open.add(state);
       queue.add(state);
+      nodeCount++;
     }
   }
-/*
+
   public void runBFS(){
+
     while(!queue.isEmpty()){
-      if(b.moveDown()){
-        add(b.getCurrentState());
+
+      if(queue.peek().equals(b.getGoalState())){
+        System.out.println("Solution found");
+        System.out.println("Nodes expanded : " + nodeCount);
+        break;
       }
+
+      add(b.moveUp(queue.peek()));
+      add(b.moveDown(queue.peek()));
+      add(b.moveLeft(queue.peek()));
+      add(b.moveRight(queue.poll()));
+
     }
   }
-  */
+
 
 }
