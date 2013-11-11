@@ -11,20 +11,20 @@ import mainCode.FileParser;
 public class BRun {
   public static void main(String[] args) {
     FileParser fp = new FileParser();
-    Board b = new Board(fp.parseFile("testStart1.txt"),fp.parseFile("testGoal1.txt"));
+    Board b = new Board(("123456780"),fp.parseFile("testGoal1.txt"));
 
     System.out.println(b.getZeroIndex());
     System.out.println(new String(b.getCurrentState()));
-    b.moveRight();
+    b.moveUp();
     System.out.println(b.getZeroIndex());
     System.out.println(new String(b.getCurrentState()));
-    b.moveRight();
+    b.moveUp();
     System.out.println(b.getZeroIndex());
     System.out.println(new String(b.getCurrentState()));
-    b.moveLeft();
+    b.moveUp();
     System.out.println(b.getZeroIndex());
     System.out.println(new String(b.getCurrentState()));
-    b.moveRight();
+    b.moveUp();
     System.out.println(b.getZeroIndex());
     System.out.println(new String(b.getCurrentState()));
 

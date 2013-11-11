@@ -77,9 +77,8 @@ public class Board {
     legal = false;
 
     if(zeroIndex >= 3){
-      currentState[zeroIndex] = currentState[(zeroIndex-3)];
-      zeroIndex-=3;
-      currentState[zeroIndex] = ZERO;
+      currentState = currentState.substring(0,zeroIndex-3)+"0"
+        +currentState.substring(zeroIndex-2,zeroIndex)+currentState.charAt(zeroIndex-3)+currentState.substring(zeroIndex+1);
       legal = true;
     }
 
@@ -92,6 +91,7 @@ public class Board {
    * With suitable constraint to prevent out-of-bounds
    * @return boolean whether the move meets constraints
    */
+  /*
   public boolean moveDown(){
     legal = false;
 
@@ -104,13 +104,14 @@ public class Board {
 
     return legal;
   }
-
+*/
 
   /**
    * Method to move the space 'left' in the puzzle
    * With suitable constraint to prevent out-of-bounds
    * @return boolean whether the move meets constraints
    */
+  /*
   public boolean moveLeft(){
     legal = false;
 
@@ -123,13 +124,14 @@ public class Board {
 
     return legal;
   }
-
+*/
 
   /**
    * Method to move the space 'right' in the puzzle
    * With suitable constraint to prevent out-of-bounds
    * @return boolean whether the move meets constraints
    */
+  /*
   public boolean moveRight(){
     legal = false;
 
@@ -143,7 +145,7 @@ public class Board {
     return legal;
   }
 
-
+*/
   /**
    * Method returns the current state
    * @return  the current state

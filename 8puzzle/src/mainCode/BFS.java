@@ -43,7 +43,7 @@ public class BFS {
       queue.add(state);
     }
   }
-
+/*
   public void runBFS(){
     while(!queue.isEmpty()){
       if(b.moveDown()){
@@ -51,5 +51,6 @@ public class BFS {
       }
     }
   }
+  */
 
 }
