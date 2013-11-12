@@ -31,11 +31,11 @@ public class H1Comparator implements Comparator<State> {
   @Override
   public int compare(State state1, State state2) {
 
-    if(ham(state1) > ham(state2)){
+    if(eval(state1) > eval(state2)){
       return 1;
     }
 
-    if(ham(state1) < ham(state2)){
+    if(eval(state1) < eval(state2)){
       return -1;
     }
 
@@ -67,6 +67,8 @@ public class H1Comparator implements Comparator<State> {
 
   }
 
-
+  public int eval(State state){
+    return ham(state)+state.getDepth();
+  }
 
 }
