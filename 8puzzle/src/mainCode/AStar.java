@@ -19,7 +19,12 @@ public class AStar {
 
   public AStar(Board b){
     this.b = b;
-    comparator = new H1Comparator(b);
+    if(b.getH() == 1){
+      comparator = new H1Comparator(b);
+    }
+    else{
+      comparator = new H2Comparator(b);
+    }
     queue = new PriorityQueue<State>(10, comparator);
     add(b.getStartState());
   }

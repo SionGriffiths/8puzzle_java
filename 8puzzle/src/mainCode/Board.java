@@ -17,6 +17,7 @@ public class Board {
    */
   private State goalState;
 
+  int heuristic = 2;
 
   /**
    * Constructs a Board instance with a start and goal state
@@ -127,6 +128,8 @@ public class Board {
     return goalState;
   }
 
-
+  public int getH(){
+    return heuristic;
+  }
 
 }

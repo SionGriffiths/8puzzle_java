@@ -68,7 +68,7 @@ public class H1Comparator implements Comparator<State> {
   }
 
   public int eval(State state){
-    return ham(state)+state.getDepth();
+    return (ham(state)+state.getDepth());
   }
 
 }
