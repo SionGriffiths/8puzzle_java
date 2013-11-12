@@ -10,11 +10,11 @@ import java.util.PriorityQueue;
  */
 public class AStar {
 
-  Board b;
-  Comparator<State> comparator;
-  PriorityQueue<State> queue;
-  HashSet<State> open = new HashSet<State>();
-  int nodeCount = 0;
+  private Board b;
+  private Comparator<State> comparator;
+  private PriorityQueue<State> queue;
+  private HashSet<State> open = new HashSet<State>();
+  private int nodeCount = 0;
 
 
   public AStar(Board b){

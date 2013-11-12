@@ -20,10 +20,7 @@ public class FileParser {
   /**A String to hold an entire board state as read from file, initialised to empty*/
   private String state;
 
-  /**Constructs a FileParser*/
-  public FileParser(){
 
-  }
   /**
    * Reads the passed in file line by line into a string.
    * Commas are stripped out of the string before it is returned

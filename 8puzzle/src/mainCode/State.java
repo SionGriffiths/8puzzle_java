@@ -8,19 +8,17 @@ package mainCode;
 public class State {
 
 
-  private State parent;
+
   private int depth;
   private String pState = "";
 
-  public State(State parent, int depth, String pState){
-    this.parent = parent;
+  public State( int depth, String pState){
+
     this.depth = depth;
     this.pState = pState;
   }
 
-  public State getParent(){
-    return parent;
-  }
+
 
   public int getDepth(){
     return depth;
