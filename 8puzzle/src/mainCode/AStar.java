@@ -10,8 +10,8 @@ import java.util.PriorityQueue;
 public class AStar {
 
   Board b;
-  Comparator<String> comparator;
-  PriorityQueue<String> queue;
+  Comparator<State> comparator;
+  PriorityQueue<State> queue;
   int pathCost = 0;
   int nodeCount = 0;
 
@@ -19,7 +19,7 @@ public class AStar {
   public AStar(Board b){
     this.b = b;
     comparator = new H1Comparator(b);
-    queue = new PriorityQueue<String>(10, comparator);
+    queue = new PriorityQueue<State>(10, comparator);
   }
 
 

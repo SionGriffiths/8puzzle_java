@@ -7,7 +7,7 @@ import java.util.Comparator;
  *         Date: 12/11/13
  *         Time: 09:13
  */
-public class H1Comparator implements Comparator<String> {
+public class H1Comparator implements Comparator<State> {
 
   /**
    * The board instance holding the goal state of the puzzle
@@ -29,7 +29,7 @@ public class H1Comparator implements Comparator<String> {
    * @return an int representing the relative ordering of the 2 parameter states
    */
   @Override
-  public int compare(String state1, String state2) {
+  public int compare(State state1, State state2) {
 
     if(ham(state1) > ham(state2)){
       return 1;
@@ -48,14 +48,15 @@ public class H1Comparator implements Comparator<String> {
    * @param state the current state
    * @return the number of tiles out of place
    */
-  public int ham(String state){
-    String goal = b.getGoalState();
+
+  public int ham(State state){
+    State goal = b.getGoalState();
     int count = 0;
 
-    for(int i = 0; i < state.length(); i++){
+    for(int i = 0; i < state.getpState().length(); i++){
 
-      if(!(state.charAt(i) == goal.charAt(i))){
-        if(!(state.charAt(i) == '0')){
+      if(!(state.getpState().charAt(i) == goal.getpState().charAt(i))){
+        if(!(state.getpState().charAt(i) == '0')){
           count++;
         }
       }

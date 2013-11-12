@@ -6,7 +6,7 @@ import java.util.Queue;
 
 /**
  * @author Siôn Griffiths - sig2@aber.ac.uk
-*/
+ */
 public class BFS {
 
   /**
@@ -17,12 +17,12 @@ public class BFS {
   /**
    * Queue implementation using LinkedList
    */
-  private Queue<String> queue = new LinkedList<String>();
+  private Queue<State> queue = new LinkedList<State>();
 
   /**
    * HashSet implementation for the explored list. HashSet chosen to avoid duplicate states being parsed.
    */
-  private HashSet<String> open = new HashSet<String>();
+  private HashSet<State> open = new HashSet<State>();
 
   int nodeCount = 0;
 
@@ -40,11 +40,13 @@ public class BFS {
    * fact a Hashset will not allow duplicate entires
    * @param state the state to be added
    */
-  public void add(String state){
-    if(!open.contains(state)){
-      open.add(state);
-      queue.add(state);
-      nodeCount++;
+  public void add(State state){
+    if(!(state == null)){
+      if(!open.contains(state)){
+        open.add(state);
+        queue.add(state);
+        nodeCount++;
+      }
     }
   }
 
@@ -64,7 +66,7 @@ public class BFS {
     }
   }
 
-  public void getChilderen(String state){
+  public void getChilderen(State state){
     add(b.moveUp(state));
     add(b.moveDown(state));
     add(b.moveLeft(state));

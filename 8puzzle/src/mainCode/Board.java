@@ -6,57 +6,29 @@ package mainCode;
 public class Board {
 
 
-
-
   /**
    * A char array to hold the start state of the puzzle
    */
-  private String startState = "";
+  private State startState;
 
 
   /**
    * A char array to hold the goal state of the puzzle
    */
-  private String goalState = "";
-
-
-  /**
-   * a char array to hold the current state of the puzzle
-   */
-  private String currentState = "";
-
-
-  /**
-   * An int used to track the position of the 0 representing the space
-   * in each game state
-   */
-  private int zeroIndex;
-
-
-
+  private State goalState;
 
 
   /**
    * Constructs a Board instance with a start and goal state
-   * @param startState the start state of the puzzle
-   * @param goalState the goal state of the puzzle
+   * @param startString the start state of the puzzle
+   * @param goalString the goal state of the puzzle
    */
-  public Board(String startState, String goalState){
-    this.startState = startState;
-    this.goalState = goalState;
-    findZero(startState);
-    currentState = startState;
+  public Board(String startString, String goalString){
+    startState = new State(null, 0, startString);
+    goalState = new State(null, 0, goalString);
+
   }
 
-
-  /**
-   * Method used to find the initial index position of the 0 representing the space
-   * in the start state of the puzzle
-   * @param state the start state of the puzzle
-   */
-  private void findZero(String state){
-    zeroIndex = state.indexOf('0');
-  }
 
 
   /**
@@ -64,14 +36,14 @@ public class Board {
    * With suitable constraint to prevent out-of-bounds
    * @return boolean whether the move meets constraints
    */
-  public String moveUp(String state){
-    findZero(state);
-    if(zeroIndex >= 3){
-      state = swapChars(state, (zeroIndex-3));
+  public State moveUp(State parent){
+    State child = null;
+    if(parent.getZeroIndex() >= 3){
+      child = new State(parent, (parent.getDepth()+1) , (swapChars(parent.getpState(), ((parent.getZeroIndex())-3))));
 
     }
 
-    return state;
+    return child;
   }
 
 
@@ -80,14 +52,14 @@ public class Board {
    * With suitable constraint to prevent out-of-bounds
    * @return boolean whether the move meets constraints
    */
-  public String moveDown(String state){
-    findZero(state);
-    if(zeroIndex <= 5){
-      state = swapChars(state, (zeroIndex+3));
+  public State moveDown(State parent){
+    State child = null;
+    if(parent.getZeroIndex() <= 5){
+      child = new State(parent, (parent.getDepth()+1) , (swapChars(parent.getpState(), ((parent.getZeroIndex())+3))));
 
     }
 
-    return state;
+    return child;
   }
 
 
@@ -97,14 +69,15 @@ public class Board {
    * @return boolean whether the move meets constraints
    */
 
-  public String moveLeft(String state){
-    findZero(state);
+  public State moveLeft(State parent){
+    State child = null;
+    int zeroIndex = parent.getZeroIndex();
     if((zeroIndex != 0) && (zeroIndex != 3) && (zeroIndex != 6)){
-      state = swapChars(state, (zeroIndex-1));
+      child = new State (parent, (parent.getDepth()+1) , (swapChars(parent.getpState(), zeroIndex-1)));
 
     }
 
-    return state;
+    return child;
   }
 
 
@@ -114,14 +87,15 @@ public class Board {
    * @return boolean whether the move meets constraints
    */
 
-  public String moveRight(String state){
-    findZero(state);
+  public State moveRight(State parent){
+    State child = null;
+    int zeroIndex = parent.getZeroIndex();
     if((zeroIndex != 2) && (zeroIndex != 5) && (zeroIndex != 8)){
-      state = swapChars(state, (zeroIndex+1));
+      child = new State (parent, (parent.getDepth()+1) , (swapChars(parent.getpState(), zeroIndex+1)));
 
     }
 
-    return state;
+    return child;
   }
 
   private String swapChars(String state, int index){
@@ -134,19 +108,13 @@ public class Board {
     return state;
   }
 
-  /**
-   * Method returns the current state
-   * @return  the current state
-   */
-  public String getCurrentState(){
-    return currentState;
-  }
+
 
   /**
    * Method returns the start state
    * @return the start state
    */
-  public String getStartState(){
+  public State getStartState(){
     return startState;
   }
 
@@ -155,18 +123,10 @@ public class Board {
    * Method returns the goal state
    * @return the goal state
    */
-  public String getGoalState(){
+  public State getGoalState(){
     return goalState;
   }
 
-
-  /**
-   * Method returns position of the 'space' in the current puzzle state
-   * @return the position of the 'space' in current state
-   */
-  public int getZeroIndex(){
-    return zeroIndex;
-  }
 
 
 }
