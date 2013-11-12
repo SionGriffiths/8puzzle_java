@@ -13,7 +13,7 @@ public class A1Run {
 
   public static void main(String[] args) {
     FileParser fp = new FileParser();
-    Board b = new Board(fp.parseFile("testStart5.txt"),fp.parseFile("testGoal1.txt"));
+    Board b = new Board(fp.parseFile("testStart4.txt"),fp.parseFile("testGoal1.txt"));
     AStar a = new AStar(b);
     a.runAStar();
   }
