@@ -51,12 +51,16 @@ public class BFS {
   }
 
   public void runBFS(){
-
+    long startTime = System.currentTimeMillis();
     while(!queue.isEmpty()){
 
       if(queue.peek().equals(b.getGoalState())){
-        System.out.println("Solution found");
+        long endTime = System.currentTimeMillis();
+        System.out.println("Solution found : " + queue.peek().getpState());
+        System.out.println("Solution depth : " + queue.peek().getDepth());
         System.out.println("Nodes expanded : " + nodeCount);
+
+        System.out.println("Runtime : " +(endTime-startTime) + " milliseconds.");
         break;
       }
 

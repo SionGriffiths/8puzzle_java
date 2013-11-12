@@ -128,6 +128,10 @@ public class Board {
     return goalState;
   }
 
+  public void setHeuristic(int h){
+    heuristic = h;
+  }
+
   public int getH(){
     return heuristic;
   }

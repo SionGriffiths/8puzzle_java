@@ -9,7 +9,7 @@ import java.util.Comparator;
  */
 public class H2Comparator implements Comparator<State> {
 
-  private Board b;
+
   private State goal;
 
   /**
@@ -29,7 +29,6 @@ public class H2Comparator implements Comparator<State> {
   };
 
   public H2Comparator(Board b){
-    this.b = b;
     goal = b.getGoalState();
   }
 
@@ -53,9 +52,8 @@ public class H2Comparator implements Comparator<State> {
   public int calcMan(State state){
 
     int manDist = 0;
-    int h = 0;
 
-    for (int i=1; i<9;i++){
+    for (int i = 1; i<state.getpState().length(); i++){
       manDist += manLookUp[state.getpState().indexOf(String.valueOf(i))][goal.getpState().indexOf(String.valueOf(i))];
     }
 

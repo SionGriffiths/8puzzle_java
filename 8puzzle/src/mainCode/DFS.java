@@ -52,13 +52,16 @@ public class DFS {
   }
 
   public void runDFS(){
-
+    long startTime = System.currentTimeMillis();
     while(!stack.isEmpty()){
 
 
       if(stack.peek().equals(b.getGoalState())){
-        System.out.println("Solution found");
+        long endTime = System.currentTimeMillis();
+        System.out.println("Solution found : " + stack.peek().getpState());
+        System.out.println("Solution depth : " + stack.peek().getDepth());
         System.out.println("Nodes expanded : " + nodeCount);
+        System.out.println("Runtime : " +(endTime-startTime) + " milliseconds.");
         break;
       }
 
