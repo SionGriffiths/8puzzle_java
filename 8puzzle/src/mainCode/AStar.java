@@ -12,6 +12,8 @@ public class AStar {
   Board b;
   Comparator<String> comparator;
   PriorityQueue<String> queue;
+  int pathCost = 0;
+  int nodeCount = 0;
 
 
   public AStar(Board b){

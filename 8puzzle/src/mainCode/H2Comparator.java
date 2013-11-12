@@ -6,4 +6,8 @@ package mainCode;
  *         Time: 09:25
  */
 public class H2Comparator {
+
+  public int difference(int a, int b){
+    return Math.abs(a-b);
+  }
 }
