@@ -12,7 +12,7 @@ import mainCode.FileParser;
 public class DRun {
   public static void main(String[] args) {
     FileParser fp = new FileParser();
-    Board b = new Board(fp.parseFile("testStart2.txt"),fp.parseFile("testGoal3.txt"));
+    Board b = new Board(fp.parseFile("testStart5.txt"),fp.parseFile("testGoal3.txt"));
     DFS dfs = new DFS(b);
     dfs.runDFS();
 
