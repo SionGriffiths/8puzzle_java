@@ -18,17 +18,5 @@ public class BRun {
 
 
 
-    /*
-    System.out.println(b.getCurrentState() + " zi = " + b.getZeroIndex() );
-    System.out.println(b.moveUp(b.getCurrentState())+ " zi = " + b.getZeroIndex() );
-
-    System.out.println(b.moveDown(b.getCurrentState())+ " zi = " + b.getZeroIndex() );
-
-    System.out.println(b.moveUp(b.getCurrentState())+ " zi = " + b.getZeroIndex() );
-
-    System.out.println(b.moveLeft(b.getCurrentState())+ " zi = " + b.getZeroIndex() );
-
-    System.out.println(b.moveUp(b.getCurrentState()) + " zi = " + b.getZeroIndex() );
-  */
   }
 }
