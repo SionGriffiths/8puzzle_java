@@ -10,16 +10,36 @@ import java.util.PriorityQueue;
  */
 public class AStar {
 
+  /**
+   * The board instance
+   */
   private Board b;
+  /**
+   * Comparator used to apply evaluation function to ordering of the priority queue
+   */
   private Comparator<State> comparator;
+  /**
+   * A PriorityQueue, used to hold puzzle states
+   */
   private PriorityQueue<State> queue;
-  private HashSet<State> open = new HashSet<State>();
+  /**
+   * HashSet implementation for the explored list. HashSet chosen to avoid duplicate states being parsed.
+   */
+  private HashSet<State> explored = new HashSet<State>();
+  /**
+   * nodeCount holds number of expanded nodes
+   */
   private int nodeCount = 0;
 
 
-  public AStar(Board b){
+  /**
+   * Constructs and AStar instance. A start state is assigned and a choice of heuristic is passed through.
+   * @param b the Board instance containing Start/Goal states
+   * @param heuristic a boolean controlling which heuristic to use
+   */
+  public AStar(Board b, boolean heuristic){
     this.b = b;
-    if(b.getH() == 1){
+    if(heuristic){
       comparator = new H1Comparator(b);
     }
     else{
@@ -36,14 +56,18 @@ public class AStar {
    */
   public void add(State state){
     if(!(state == null)){
-      if(!open.contains(state)){
-        open.add(state);
+      if(!explored.contains(state)){
+        explored.add(state);
         queue.add(state);
         nodeCount++;
       }
     }
   }
 
+  /**
+   * Runs A-Star search from the current start state. Ends if queue is empty or solution is found.
+   * Prints out suitable information on completion.
+   */
   public void runAStar(){
     long startTime = System.currentTimeMillis();
     while(!queue.isEmpty()){
@@ -51,10 +75,7 @@ public class AStar {
 
       if(queue.peek().equals(b.getGoalState())){
         long endTime = System.currentTimeMillis();
-        b.outputSolutionPath(queue.peek());
-        System.out.println("Solution found : " + queue.peek().getpState());
-        System.out.println("Solution depth : " + queue.peek().getDepth());
-        System.out.println("Nodes expanded : " + nodeCount);
+        successPrint();
         System.out.println("Runtime : " +(endTime-startTime) + " milliseconds.");
         break;
       }
@@ -68,11 +89,25 @@ public class AStar {
     }
   }
 
+  /**
+   * Method takes a parent State and generates all legal child states, adds them to the lists
+   * @param state the parent State
+   */
   public void getChilderen(State state){
     add(b.moveUp(state));
     add(b.moveDown(state));
     add(b.moveLeft(state));
     add(b.moveRight(state));
+  }
+
+  /**
+   * Method prints out relevant information about solution on finding goal state
+   */
+  public void successPrint(){
+    b.outputSolutionPath(queue.peek());
+    System.out.println("Solution found : " + queue.peek().getStateString());
+    System.out.println("Solution depth : " + queue.peek().getDepth());
+    System.out.println("Nodes expanded : " + nodeCount);
   }
 
 

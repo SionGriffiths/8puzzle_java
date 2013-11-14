@@ -22,9 +22,12 @@ public class BFS {
   /**
    * HashSet implementation for the explored list. HashSet chosen to avoid duplicate states being parsed.
    */
-  private HashSet<State> open = new HashSet<State>();
+  private HashSet<State> explored = new HashSet<State>();
 
-  int nodeCount = 0;
+  /**
+   * nodeCount holds number of expanded nodes
+   */
+  private int nodeCount = 0;
 
   /**
    * Constructs a BFS instance takes the Board as argument so current and goal states can be retrieved
@@ -42,14 +45,18 @@ public class BFS {
    */
   public void add(State state){
     if(!(state == null)){
-      if(!open.contains(state)){
-        open.add(state);
+      if(!explored.contains(state)){
+        explored.add(state);
         queue.add(state);
         nodeCount++;
       }
     }
   }
 
+  /**
+   * Runs breadth first search search from the current start state. Ends if queue is empty or solution is found.
+   * Prints out suitable information on completion.
+   */
   public void runBFS(){
     long startTime = System.currentTimeMillis();
     while(!queue.isEmpty()){
@@ -57,11 +64,7 @@ public class BFS {
 
       if(queue.peek().equals(b.getGoalState())){
         long endTime = System.currentTimeMillis();
-        b.outputSolutionPath(queue.peek());
-        System.out.println("Solution found : " + queue.peek().getpState());
-        System.out.println("Solution depth : " + queue.peek().getDepth());
-        System.out.println("Nodes expanded : " + nodeCount);
-
+        successPrint();
         System.out.println("Runtime : " +(endTime-startTime) + " milliseconds.");
         break;
       }
@@ -75,11 +78,25 @@ public class BFS {
     }
   }
 
+  /**
+   * Method takes a parent State and generates all legal child states, adds them to the lists
+   * @param state the parent State
+   */
   public void getChilderen(State state){
     add(b.moveUp(state));
     add(b.moveDown(state));
     add(b.moveLeft(state));
     add(b.moveRight(state));
+  }
+
+  /**
+   * Method prints out relevant information about solution on finding goal state
+   */
+  public void successPrint(){
+    b.outputSolutionPath(queue.peek());
+    System.out.println("Solution found : " + queue.peek().getStateString());
+    System.out.println("Solution depth : " + queue.peek().getDepth());
+    System.out.println("Nodes expanded : " + nodeCount);
   }
 
 }

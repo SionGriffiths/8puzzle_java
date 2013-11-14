@@ -17,7 +17,11 @@ public class Board {
    */
   private State goalState;
 
-  private int heuristic = 2;
+
+  /**
+   * Integer used to limit amount of states printed upon successful completion of a puzzle
+   */
+  private int printCount = 0;
 
   /**
    * Constructs a Board instance with a start and goal state
@@ -40,7 +44,7 @@ public class Board {
   public State moveUp(State parent){
     State child = null;
     if(parent.getZeroIndex() >= 3){
-      child = new State(parent ,(parent.getDepth()+1) , (swapChars(parent.getpState(), ((parent.getZeroIndex())-3))));
+      child = new State(parent ,(parent.getDepth()+1) , (swapChars(parent.getStateString(), ((parent.getZeroIndex())-3))));
 
     }
 
@@ -56,7 +60,7 @@ public class Board {
   public State moveDown(State parent){
     State child = null;
     if(parent.getZeroIndex() <= 5){
-      child = new State(parent ,(parent.getDepth()+1) , (swapChars(parent.getpState(), ((parent.getZeroIndex())+3))));
+      child = new State(parent ,(parent.getDepth()+1) , (swapChars(parent.getStateString(), ((parent.getZeroIndex())+3))));
 
     }
 
@@ -74,7 +78,7 @@ public class Board {
     State child = null;
     int zeroIndex = parent.getZeroIndex();
     if((zeroIndex != 0) && (zeroIndex != 3) && (zeroIndex != 6)){
-      child = new State (parent ,(parent.getDepth()+1) , (swapChars(parent.getpState(), zeroIndex-1)));
+      child = new State (parent ,(parent.getDepth()+1) , (swapChars(parent.getStateString(), zeroIndex-1)));
 
     }
 
@@ -92,13 +96,19 @@ public class Board {
     State child = null;
     int zeroIndex = parent.getZeroIndex();
     if((zeroIndex != 2) && (zeroIndex != 5) && (zeroIndex != 8)){
-      child = new State (parent ,(parent.getDepth()+1) , (swapChars(parent.getpState(), zeroIndex+1)));
+      child = new State (parent ,(parent.getDepth()+1) , (swapChars(parent.getStateString(), zeroIndex+1)));
 
     }
 
     return child;
   }
 
+  /**
+   * Method swaps the 'space' and target character in a puzzle State
+   * @param state the puzzle State
+   * @param index the index of target character
+   * @return the new puzzle state
+   */
   private String swapChars(String state, int index){
 
     char temp = state.charAt(index);
@@ -128,32 +138,21 @@ public class Board {
     return goalState;
   }
 
-  public void setHeuristic(int h){
-    heuristic = h;
-  }
-
-  public int getH(){
-    return heuristic;
-  }
-
+  /**
+   * Preorder printout of solution path, from start to goal. Constraint of 200 max states.
+   * @param state The state from which to begin printing
+   */
   public void outputSolutionPath(State state){
-    State parent = state;
-    while(!(parent.getParent() == null)){
-      //System.out.println(parent.getpState());
 
-
-      System.out.println(parent.getpState());
-      parent = parent.getParent();
-    }
-    System.out.println(parent.getpState());
-    /*
     if(state.getParent() == null){
-      System.out.println(state.getpState()+ " <- Start State");
+      System.out.println(state.getStateString()+ " <- Start State");
     }
     else{
+      printCount++;
+      if(printCount == 200){return;} //prevent stack overflow on printout of large solution path
       outputSolutionPath(state.getParent());
-      System.out.println(state.getpState());
+      System.out.println(state.getStateString());
     }
-    */
+
   }
 }

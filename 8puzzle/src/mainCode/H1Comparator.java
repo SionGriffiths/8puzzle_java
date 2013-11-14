@@ -4,8 +4,6 @@ import java.util.Comparator;
 
 /**
  * @author Siôn Griffiths - sig2@aber.ac.uk
- *         Date: 12/11/13
- *         Time: 09:13
  */
 public class H1Comparator implements Comparator<State> {
 
@@ -53,10 +51,10 @@ public class H1Comparator implements Comparator<State> {
     State goal = b.getGoalState();
     int count = 0;
 
-    for(int i = 0; i < state.getpState().length(); i++){
+    for(int i = 0; i < state.getStateString().length(); i++){
 
-      if(!(state.getpState().charAt(i) == goal.getpState().charAt(i))){
-        if(!(state.getpState().charAt(i) == '0')){
+      if(!(state.getStateString().charAt(i) == goal.getStateString().charAt(i))){
+        if(!(state.getStateString().charAt(i) == '0')){
           count++;
         }
       }
@@ -67,6 +65,11 @@ public class H1Comparator implements Comparator<State> {
 
   }
 
+  /**
+   * The evaluation of a State for this heuristic comparator
+   * @param state the State
+   * @return the evaluation value, corresponds to h(n)+g(n)
+   */
   public int eval(State state){
     return (ham(state)+state.getDepth());
   }

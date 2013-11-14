@@ -2,8 +2,6 @@ package mainCode;
 
 /**
  * @author Siôn Griffiths - sig2@aber.ac.uk
- *         Date: 12/11/13
- *         Time: 14:22
  */
 public class Solve {
 
@@ -22,13 +20,13 @@ public class Solve {
         dfs.runDFS();
       }
       else if(args[2].equals("astar1")){
-        b.setHeuristic(1);
-        AStar a = new AStar(b);
+
+        AStar a = new AStar(b, false);
         a.runAStar();
       }
       else if(args[2].equals("astar2")){
-        b.setHeuristic(2);
-        AStar a = new AStar(b);
+
+        AStar a = new AStar(b, true);
         a.runAStar();
       }
     }
