@@ -11,9 +11,10 @@ public class State {
 
   private int depth;
   private String pState = "";
+  private State parent;
 
-  public State( int depth, String pState){
-
+  public State(State parent, int depth, String pState){
+    this.parent = parent;
     this.depth = depth;
     this.pState = pState;
   }
@@ -30,6 +31,10 @@ public class State {
 
   public int getZeroIndex(){
     return pState.indexOf('0');
+  }
+
+  public State getParent(){
+    return parent;
   }
 
   @Override

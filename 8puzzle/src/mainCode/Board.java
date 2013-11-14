@@ -25,8 +25,8 @@ public class Board {
    * @param goalString the goal state of the puzzle
    */
   public Board(String startString, String goalString){
-    startState = new State(0, startString);
-    goalState = new State(0, goalString);
+    startState = new State(null,0, startString);
+    goalState = new State(null, 0, goalString);
 
   }
 
@@ -40,7 +40,7 @@ public class Board {
   public State moveUp(State parent){
     State child = null;
     if(parent.getZeroIndex() >= 3){
-      child = new State((parent.getDepth()+1) , (swapChars(parent.getpState(), ((parent.getZeroIndex())-3))));
+      child = new State(parent ,(parent.getDepth()+1) , (swapChars(parent.getpState(), ((parent.getZeroIndex())-3))));
 
     }
 
@@ -56,7 +56,7 @@ public class Board {
   public State moveDown(State parent){
     State child = null;
     if(parent.getZeroIndex() <= 5){
-      child = new State((parent.getDepth()+1) , (swapChars(parent.getpState(), ((parent.getZeroIndex())+3))));
+      child = new State(parent ,(parent.getDepth()+1) , (swapChars(parent.getpState(), ((parent.getZeroIndex())+3))));
 
     }
 
@@ -74,7 +74,7 @@ public class Board {
     State child = null;
     int zeroIndex = parent.getZeroIndex();
     if((zeroIndex != 0) && (zeroIndex != 3) && (zeroIndex != 6)){
-      child = new State ((parent.getDepth()+1) , (swapChars(parent.getpState(), zeroIndex-1)));
+      child = new State (parent ,(parent.getDepth()+1) , (swapChars(parent.getpState(), zeroIndex-1)));
 
     }
 
@@ -92,7 +92,7 @@ public class Board {
     State child = null;
     int zeroIndex = parent.getZeroIndex();
     if((zeroIndex != 2) && (zeroIndex != 5) && (zeroIndex != 8)){
-      child = new State ((parent.getDepth()+1) , (swapChars(parent.getpState(), zeroIndex+1)));
+      child = new State (parent ,(parent.getDepth()+1) , (swapChars(parent.getpState(), zeroIndex+1)));
 
     }
 
@@ -136,4 +136,24 @@ public class Board {
     return heuristic;
   }
 
+  public void outputSolutionPath(State state){
+    State parent = state;
+    while(!(parent.getParent() == null)){
+      //System.out.println(parent.getpState());
+
+
+      System.out.println(parent.getpState());
+      parent = parent.getParent();
+    }
+    System.out.println(parent.getpState());
+    /*
+    if(state.getParent() == null){
+      System.out.println(state.getpState()+ " <- Start State");
+    }
+    else{
+      outputSolutionPath(state.getParent());
+      System.out.println(state.getpState());
+    }
+    */
+  }
 }

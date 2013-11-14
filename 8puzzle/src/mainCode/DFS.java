@@ -58,6 +58,7 @@ public class DFS {
 
       if(stack.peek().equals(b.getGoalState())){
         long endTime = System.currentTimeMillis();
+        b.outputSolutionPath(stack.peek());
         System.out.println("Solution found : " + stack.peek().getpState());
         System.out.println("Solution depth : " + stack.peek().getDepth());
         System.out.println("Nodes expanded : " + nodeCount);
@@ -69,13 +70,20 @@ public class DFS {
 
 
     }
+    if(stack.isEmpty()){
+      System.out.println("Solution not found");
+    }
   }
 
   public void getChilderen(State state){
+
     add(b.moveUp(state));
     add(b.moveDown(state));
     add(b.moveLeft(state));
     add(b.moveRight(state));
+
+
+
   }
 
 

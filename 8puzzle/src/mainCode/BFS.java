@@ -54,8 +54,10 @@ public class BFS {
     long startTime = System.currentTimeMillis();
     while(!queue.isEmpty()){
 
+
       if(queue.peek().equals(b.getGoalState())){
         long endTime = System.currentTimeMillis();
+        b.outputSolutionPath(queue.peek());
         System.out.println("Solution found : " + queue.peek().getpState());
         System.out.println("Solution depth : " + queue.peek().getDepth());
         System.out.println("Nodes expanded : " + nodeCount);
@@ -67,6 +69,9 @@ public class BFS {
       getChilderen(queue.poll());
 
 
+    }
+    if(queue.isEmpty()){
+      System.out.println("Solution not found");
     }
   }
 
