@@ -21,12 +21,12 @@ public class Solve {
       }
       else if(args[2].equals("astar1")){
 
-        AStar a = new AStar(b, false);
+        AStar a = new AStar(b, true);
         a.runAStar();
       }
       else if(args[2].equals("astar2")){
 
-        AStar a = new AStar(b, true);
+        AStar a = new AStar(b, false);
         a.runAStar();
       }
     }
